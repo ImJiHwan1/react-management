@@ -21,14 +21,14 @@ class App extends Component {
         customers: ""
     }
 
-    componentWillUnmount() {
+    componentDidMount() {
         this.callApi()
             .then(res => this.setState({ customers: res }))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
     }
 
     callApi = async() => {
-        const response = await fetch('/api/customers')
+        const response = await fetch('/api/customers');
         const body = await response.json();
         return body;
     }
